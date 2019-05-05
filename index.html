@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Synth JS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body class="noscroll">
+  <main>
+    <section class="sequencer">
+      <div id="clear">
+        clear
+      </div>
+      <div class="pads">
+        <div class="kick drum">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <div class="closed_hat drum">
+          <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <div class="snare drum">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <div class="clap drum">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="modular">
+      <form class="modular_settings">
+        <div class="synth_option">
+            <input name="synth" class="synth_type" type="radio" id="defaultSynth" value="Synth" checked />
+            <label for="defaultSynth">Synth</label>
+    
+            <input name="synth" class="synth_type" type="radio" id="FMSynth" value="FMSynth" />
+            <label for="FMSynth">FM Synth</label>
+    
+            <input name="synth" class="synth_type" type="radio" id="AMSynth" value="AMSynth" />
+            <label for="AMSynth">AM Synth</label>
+
+            <input name="synth" class="synth_type" type="radio" id="MembraneSynth" value="MembraneSynth" />
+              <label for="MembraneSynth">Membrane Synth</label>
+        </div>
+        <div class="oscillator_option">
+          <input name="wavetype" class="oscillator_type" type="radio" id="sine_wave" value="sine" checked />
+          <label for="sine_wave">
+            <img src="./images/sinewave.svg" alt="sinewave">
+          </label>
+  
+          <input name="wavetype" class="oscillator_type" type="radio" id="square_wave" value="square" />
+          <label for="square_wave">
+            <img src="./images/square.svg" alt="sinewave">
+          </label>
+  
+          <input name="wavetype" class="oscillator_type" type="radio" id="triangle_wave" value="triangle" />
+          <label for="triangle_wave">
+            <img src="./images/triangle.svg" alt="sinewave">
+          </label>
+
+          <input name="wavetype" class="oscillator_type" type="radio" id="sawtooth_wave" value="sawtooth" />
+          <label for="sawtooth_wave">
+            <img src="./images/sawtooth.svg" alt="sawtooth">
+          </label>
+        </div>
+      </form>
+
+      <div class="effects">
+        <div class="reverb">
+          <div class="sliders">
+            <div class="input_group">
+                <label for="reverb_decay">Decay</label>
+                <input type="range" min="0" max="4" step="0.01" id="reverb_decay">
+            </div>
+          </div>
+          <div class="name">Reverb</div>
+        </div>
+
+        <div class="chorus">
+          <div class="sliders">
+            <div class="input_group">
+              <label for="chorus_frequency">Frequency</label>
+              <input type="range" min="0" max="4" step="0.1" id="chorus_frequency">
+            </div>
+            <div class="input_group">
+              <label for="chorus_delay">Delay</label>
+              <input type="range" min="0" max="7" step="0.1" id="chorus_delay">
+            </div>
+            <div class="input_group">
+              <label for="chorus_depth">Depth</label>
+              <input type="range" min="0" max="1" step="0.01" id="chorus_depth">
+            </div>
+          </div>
+          <div class="name">Chorus</div>
+        </div>
+
+        <div class="tremolo">
+          <div class="sliders">
+            <div class="input_group">
+              <label for="tremolo_frequency">Frequency</label>
+              <input type="range" min="0" max="10" step="0.1" id="tremolo_frequency">
+            </div>
+          </div>
+          <div class="name">Tremolo</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="input_group">
+          <label for="sequncer_gain">Sequencer gain</label>
+          <input type="range" min="0" max="1" step="0.01" id="sequncer_gain" value="0.6">
+        </div>
+
+        <div class="input_group">
+          <label for="synth_gain">Synth gain</label>
+          <input type="range" min="0" max="1" step="0.01" id="synth_gain" value="0.8">
+        </div>
+
+        <div class="input_group">
+          <label for="bpm">BPM</label>
+          <input type="range" min="80" max="200" step="1" id="bpm" value="128">
+        </div>
+
+        <div class="play_button">
+          <button type="button" id="play_sequence">Play</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="visuals">
+    <svg viewBox="0 0 963 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <filter id="displacementFilter">
+        <feTurbulence type="turbulence" baseFrequency="0.04"
+            numOctaves="2" result="turbulence"/>
+        <feDisplacementMap in2="turbulence" in="SourceGraphic"
+            scale="54" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <path class="shape" style="filter: url(#displacementFilter); transform-origin: center;" d="M363.5 507C444.5 485 483.5 463 518 485C552.5 507 616.5 495.5 681.5 516.5C746.5 537.5 759 508.333 773.5 485C788 461.667 796 450.5 824.5 439C853 427.5 862.5 393 816.5 377C816.5 377 801.31 348.5 764 342C726.69 335.5 738.5 359.5 718 377C697.5 394.5 694 393 700.5 427.5C707 462 613 461.667 602 427.5C591 393.333 602 393 560.5 369C519 345 481.5 409 422.5 393C363.5 377 419.5 438.333 413 461.667C406.5 485 287.5 461.667 287.5 461.667C287.5 461.667 282.5 529 363.5 507Z" fill="#455AFB"/>
+      <path class="shape" style="filter: url(#displacementFilter); transform-origin: center;" d="M560.177 181.438C560.423 181.485 560.619 181.542 560.855 181.626L612.98 200.15C623.253 193.772 633.377 185.381 643 173.5C692 113 773.5 224.5 808.5 143.5C843.5 62.4999 720 129 681.5 102C643 74.9999 700.5 70.5 602 43.4999C503.5 16.4999 522.5 83.4999 443 132.5C363.5 181.5 340 14.9999 297 65.4999C254 116 187.5 82.9999 190.5 153C192.007 188.171 225.701 213.244 258.858 229.487C261.802 206.601 289.564 187.664 340 173.5C411.013 153.558 552.526 179.985 560.177 181.438Z" fill="#455AFB"/>
+      <path class="shape" style="filter: url(#displacementFilter); transform-origin: center;" d="M560.855 181.626C560.619 181.542 560.423 181.485 560.177 181.438C552.526 179.985 411.013 153.558 340 173.5C289.564 187.664 261.802 206.601 258.858 229.487C288.521 244.019 317.755 251.485 323.125 252.791C323.708 252.933 324.179 253.119 324.682 253.446C335.673 260.587 476.119 350.074 503.5 278.5C526.403 218.631 570.94 226.247 612.98 200.15L560.855 181.626Z" fill="#455AFB"/>
+      <path class="shape" style="filter: url(#displacementFilter); transform-origin: center;" d="M816.5 377C862.055 344.461 777.529 287.289 765.418 279.41C764.474 278.795 763.806 277.92 763.38 276.877C749.42 242.661 685.939 225.653 681.721 224.557C681.568 224.517 681.426 224.473 681.277 224.421L612.98 200.15M816.5 377C862.5 393 853 427.5 824.5 439C796 450.5 788 461.667 773.5 485C759 508.333 746.5 537.5 681.5 516.5C616.5 495.5 552.5 507 518 485C483.5 463 444.5 485 363.5 507C282.5 529 287.5 461.667 287.5 461.667M816.5 377C816.5 377 801.31 348.5 764 342C726.69 335.5 738.5 359.5 718 377C697.5 394.5 694 393 700.5 427.5C707 462 613 461.667 602 427.5C591 393.333 602 393 560.5 369C519 345 481.5 409 422.5 393C363.5 377 419.5 438.333 413 461.667C406.5 485 287.5 461.667 287.5 461.667M287.5 461.667L249.897 439.236C249.633 439.079 249.384 438.898 249.154 438.695L170.033 369.029C170.011 369.009 170.014 369.013 169.993 368.993C169.304 368.362 119.416 322.349 179.5 300.5C240 278.5 298.5 300.5 270 262.5C261.191 250.755 257.541 239.726 258.858 229.487M612.98 200.15L560.855 181.626C560.619 181.542 560.423 181.485 560.177 181.438C552.526 179.985 411.013 153.558 340 173.5C289.564 187.664 261.802 206.601 258.858 229.487M612.98 200.15C623.253 193.772 633.377 185.381 643 173.5C692 113 773.5 224.5 808.5 143.5C843.5 62.4999 720 129 681.5 102C643 74.9999 700.5 70.5 602 43.4999C503.5 16.4999 522.5 83.4999 443 132.5C363.5 181.5 340 14.9999 297 65.4999C254 116 187.5 82.9999 190.5 153C192.007 188.171 225.701 213.244 258.858 229.487M612.98 200.15C570.94 226.247 526.403 218.631 503.5 278.5C476.119 350.074 335.673 260.587 324.682 253.446C324.179 253.119 323.708 252.933 323.125 252.791C317.755 251.485 288.521 244.019 258.858 229.487" stroke="#455AFB" stroke-width="5"/>
+      <circle class="hihat_circle" cx="243" cy="199" r="67" fill="#F76C6C"/>
+      <circle class="snare_circle" cx="647.5" cy="486.5" r="49.5" fill="#F76C6C"/>
+      <circle class="clap_circle" cx="872.5" cy="191.5" r="24.5" fill="#F76C6C"/>
+      <circle class="kick_circle" cx="426.5" cy="401.5" r="51.5" fill="#F76C6C"/>
+      <circle class="clap_circle" cx="375" cy="274" r="20" fill="#F76C6C"/>
+      <circle class="kick_circle" cx="695.5" cy="68.5" r="68.5" fill="#F76C6C"/>
+      <path id="waveline" style="filter: url(#displacementFilter); transform-origin: center;" d="M961 317C961 317 794 150 768.5 225C743 300 690.5 330.5 666.5 271C642.5 211.5 542 107.5 516.5 184C491 260.5 462 286 397.5 317C333 348 353.5 333.5 254.5 344C155.5 354.5 134 238.5 74 271C14 303.5 2.5 390 2.5 390" stroke="#F9F9FC" stroke-width="5"/>
+      </svg>
+  </div>
+
+  <div class="prompt_wrapper">
+    <div class="prompt_window">
+      <p>Hey, to use this application you need to authorize AudioContext in your browser</p>
+      <button type="button" id="allowAudio">Allow audio</button>
+    </div>
+  </div>
+
+  <div class="loader_wrapper active">
+      <div class="circle circle_1"></div>
+      <div class="circle circle_2"></div>
+      <div class="circle circle_3"></div>
+      <div class="circle circle_4"></div>
+  </div>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

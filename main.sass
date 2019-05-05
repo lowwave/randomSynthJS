@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Muli')
+@import './styles/reset'
+@import './styles/colors'
+@import './styles/loader'
+@import './styles/drummachine'
+@import './styles/bass'
+@import './styles/modular'
+@import './styles/effects'
+@import './styles/controls'
+@import './styles/prompt'
+@import './styles/visuals'
+
+html, body
+  width: 100%
+  height: 100vh
+  background-color: $black
+  font-family: 'Muli', sans-serif
+
+body
+  &.noscroll
+    overflow: hidden
+    position: fixed
+
+main
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+  justify-content: center
+  section
+    width: 95%
+    padding: 0.3rem 0.5rem
+    @media (min-width: 1500px)
+      width: 80%
+  

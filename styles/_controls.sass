@@ -1,0 +1,43 @@
+@import './colors'
+@import './input'
+
+.controls
+  width: 25vw
+  @media (max-width: 768px)
+    width: 90vw
+    margin-bottom: 3vh
+  @media (min-width: 1500px)
+      width: 25%
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-around
+  margin-right: 5px
+  background-color: transparent
+  border: 2px solid $orange
+  height: 100%
+  border-radius: 5px
+  .input_group
+    width: 90%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+  .play_button
+    width: 80%
+  button
+    width: 100%
+    color: $orange
+    background-color: transparent
+    border: 2px solid $orange
+    border-radius: 5px
+    padding: 1rem 0
+    font-size: 1.3rem
+    font-weight: 600
+    letter-spacing: 0.3rem
+    cursor: pointer
+    transition: all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    &.stop
+      color: $white
+      background-color: $orange
+  @include range
