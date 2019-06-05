@@ -26,6 +26,14 @@
       background: $orange
       border-radius: 5px
       border: 0px solid $black
+    &::-moz-range-track
+      width: 90%
+      height: 3px
+      cursor: pointer
+      animate: 0.2s
+      background: $orange
+      border-radius: 5px
+      border: 0px solid $black
     &::-webkit-slider-thumb
       box-shadow: 1px 1px 1px lighten($black, 5%)
       border: 1px solid #00001E
@@ -36,3 +44,15 @@
       cursor: pointer
       -webkit-appearance: none
       margin-top: -8px
+    &::-moz-range-thumb
+      box-shadow: 1px 1px 1px lighten($black, 5%)
+      border: 1px solid #00001E
+      height: 20px
+      width: 20px
+      border-radius: 15px
+      background: $orange
+      cursor: pointer
+      -moz-appearance: none
+      margin-top: -8px
+    &::-moz-focus-outer
+      border: 0

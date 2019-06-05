@@ -51,7 +51,6 @@ Tone.Transport.bpm.value = 128;
 
 let bpmInput = document.querySelector('#bpm');
 bpmInput.addEventListener('change', (event) => {
-  console.log(event.target.value);
   Tone.Transport.bpm.value = event.target.value;
 });
 
@@ -73,9 +72,6 @@ class Synthesizer {
   play(note) {
     this.synth.triggerAttack(note);
     this.synth.triggerRelease("+0.5");
-    shapeNoiseAnimation.restart();
-    shapeAnimation.restart();
-    waveAnimation.restart();
   }
 
   updateSynthType(synthType) {
@@ -89,7 +85,7 @@ class Synthesizer {
     let newSynth = new Tone[synthType](settings);
     this.synth = newSynth;
     this.synth.oscillator.type = this.wavetype;
-    this.synth.fan(this.reverb, this.chorus, this.tremolo, this.gain, FFT);
+    this.synth.fan(this.reverb, this.chorus, this.tremolo, this.gain);
   }
 
   updateOscillatorType(oscType) {
@@ -128,15 +124,35 @@ class Synthesizer {
         this.synth.connect(this.tremolo);
         break;
       case 'chorus_frequency':
-        let newChorus = new Tone.Chorus(effect.value, 4, 0.9).toMaster();
-        this.chorus.dispose();
-        this.chorus = newChorus;
-        this.synth.connect(this.chorus);
+        this.setNewChorus('frequency', effect.value);
+        break;
+      case 'chorus_delay':
+        this.setNewChorus('delay', effect.value);
+        break;
+      case 'chorus_depth':
+        this.setNewChorus('depth', effect.value);
         break;
       default:
         console.log('none');
         break;
     }
+  }
+
+  setNewChorus(parameter, newValue) {
+    const { frequency, delayTime, depth } = this.chorus;
+    let newChorus;
+    if (parameter === 'frequency') {
+      newChorus = new Tone.Chorus(newValue, delayTime, depth).toMaster();
+    } else if (parameter === 'delay') {
+      let newDelayTime = newValue;
+      newChorus = new Tone.Chorus(frequency.value, newDelayTime, depth).toMaster();
+    } else if (parameter === 'depth') {
+      let newDepth = newValue;
+      newChorus = new Tone.Chorus(frequency.value, delayTime, newDepth).toMaster();      
+    }
+    this.chorus.dispose();
+    this.chorus = newChorus;
+    this.synth.connect(this.chorus); 
   }
 
   get defaultSettings() {
@@ -262,7 +278,7 @@ clearButton.addEventListener('click', () => {
 });
 
 // Settings
-drums.forEach(drum => drum.connect(sequenceGain);
+drums.forEach(drum => drum.connect(sequenceGain));
 
 Tone.Transport.scheduleRepeat(drumSequence, '8n');
 
@@ -286,28 +302,12 @@ let sequenceIndex = 0;
 function drumSequence(time) {
   let step = sequenceIndex % 16;
   for (let i = 0; i < rows.length; i++) {
-    console.log(step);
     let drum = drums[i];
     let row = rows[i];
     let beat = row.querySelector(`.square:nth-child(${step + 1})`);
 
     if (beat.classList.contains('active')) {
       drum.start();
-      let drumType = beat.parentElement.classList[0];
-      switch(drumType) {
-        case 'kick':
-          kickAnimation.restart()
-          break;
-        case 'closed_hat':
-          hihatAnimation.restart()
-          break;
-        case 'snare':
-          snareAnimation.restart()
-          break;
-        case 'clap':
-          clapAnimation.restart()
-          break;
-      }
     }
   }
   sequenceIndex++;
@@ -402,64 +402,4 @@ let circle4 = anime({
 	easing: 'easeInOutQuad',
 	duration: 600,
 	delay: 400
-})
-
-let kickAnimation = anime({
-  targets: 'svg .kick_circle',
-  autoplay: false,
-  direction: 'alternate',
-  fill: '#FAD02C',
-  easing: 'easeInOutSine',
-  duration: 500,
-})
-
-let hihatAnimation = anime({
-  targets: 'svg .hihat_circle',
-  autoplay: false,
-  direction: 'alternate',
-  fill: '#FFF5D6',
-  easing: 'easeInOutSine',
-  duration: 400,
-})
-
-let snareAnimation = anime({
-  targets: 'svg .snare_circle',
-  autoplay: false,
-  direction: 'alternate',
-  fill: '#D1370A',
-  easing: 'easeInOutSine',
-  duration: 400,
-})
-
-let clapAnimation = anime({
-  targets: 'svg .clap_circle',
-  autoplay: false,
-  direction: 'alternate',
-  fill: '#4A00FF',
-  easing: 'easeInOutSine',
-  duration: 400,
-})
-
-let shapeNoiseAnimation = anime({
-  targets: ['feTurbulence', 'feDisplacementMap'],
-  autoplay: false,
-  baseFrequency: 0.15,
-  easing: 'easeInOutSine',
-  duration: 300,
-})
-
-let shapeAnimation = anime({
-  targets: 'svg .shape',
-  autoplay: false,
-  scale: 0.85,
-  easing: 'easeInOutSine',
-  duration: 400,
-})
-
-let waveAnimation = anime({
-  targets: '#waveline',
-  autoplay: false,
-  duration: 700,
-  easing: 'easeInOutSine',
-  direction: 'alternate'
 })
